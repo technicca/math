@@ -3,7 +3,6 @@
 
 #include <vector>
 
-// function declarations
 double dotProduct(const std::vector<double>& v1, const std::vector<double>& v2);
 std::vector<double> crossProduct(const std::vector<double>& v1, const std::vector<double>& v2);
 double normL1(const std::vector<double>& v);
