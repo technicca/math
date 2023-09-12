@@ -18,5 +18,5 @@ double angleBetweenVectors(const std::vector<double>& v1, const std::vector<doub
 std::vector<double> normalize(const std::vector<double>& v);
 void drawVector(const std::vector<double>& v);
 
-#endif // VECTOR_H
+#endif
 
