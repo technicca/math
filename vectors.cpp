@@ -1,25 +1,11 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <stdexcept>
 #include "vectors.h"
 
-using namespace std;
+#include <cmath>
+#include <iostream>
+#include <stdexcept>
+#include <vector>
 
-// Function Declarations
-double dotProduct(const vector<double>& v1, const vector<double>& v2);
-vector<double> crossProduct(const vector<double>& v1, const vector<double>& v2);
-double normL1(const vector<double>& v);
-double normL2(const vector<double>& v);
-double normInfinity(const vector<double>& v);
-double normP(const vector<double>& v, int p);
-vector<double> vectorAddition(const vector<double>& v1, const vector<double>& v2);
-vector<double> vectorMultiply(const vector<double>& v1, const vector<double>& v2);
-bool isLinearlyIndependent(const vector<vector<double>>& vectors);
-vector<double> vectorSubtraction(const vector<double>& v1, const vector<double>& v2);
-vector<double> scalarMultiply(const vector<double>& v, double scalar);
-double angleBetweenVectors(const vector<double>& v1, const vector<double>& v2);
-void drawVector(const vector<double>& v);
+using namespace std;
 
 double dotProduct(const vector<double>& v1, const vector<double>& v2) {
     if (v1.size() != v2.size()) {
@@ -84,7 +70,6 @@ double normP(const vector<double>& v, int p) {
     return pow(result, 1.0 / p);
 }
 
-
 // Vector Addition
 vector<double> vectorAddition(const vector<double>& v1, const vector<double>& v2) {
     if (v1.size() != v2.size()) {
@@ -113,13 +98,15 @@ vector<double> vectorMultiply(const vector<double>& v1, const vector<double>& v2
 
 bool isLinearlyIndependent(const vector<vector<double>>& vectors) {
     if (vectors.size() == 3 && vectors[0].size() == 3) {
-        double det = vectors[0][0] * (vectors[1][1] * vectors[2][2] - vectors[2][1] * vectors[1][2]) -
-                     vectors[0][1] * (vectors[1][0] * vectors[2][2] - vectors[2][0] * vectors[1][2]) +
-                     vectors[0][2] * (vectors[1][0] * vectors[2][1] - vectors[2][0] * vectors[1][1]);
+        double det
+            = vectors[0][0] * (vectors[1][1] * vectors[2][2] - vectors[2][1] * vectors[1][2])
+              - vectors[0][1] * (vectors[1][0] * vectors[2][2] - vectors[2][0] * vectors[1][2])
+              + vectors[0][2] * (vectors[1][0] * vectors[2][1] - vectors[2][0] * vectors[1][1]);
 
         return (det != 0);
     } else {
-        throw invalid_argument("This check for linear independence only works for 3 sets of 3D vectors.");
+        throw invalid_argument(
+            "This check for linear independence only works for 3 sets of 3D vectors.");
     }
 }
 
@@ -196,7 +183,8 @@ void drawVector(const vector<double>& v) {
     }
 }
 
-// Dot, Cross Product function and linear independence check are omitted in the main function because they are applicable only on 3D
+// Dot, Cross Product function and linear independence check are omitted in the main function
+// because they are applicable only on 3D
 
 int main() {
     vector<double> sv1 = {3, 2, 5};
@@ -204,13 +192,11 @@ int main() {
     vector<double> v2D = {4, 5};
 
     cout << "sv1: ";
-    for (auto i : sv1)
-        cout << i << " ";
+    for (auto i : sv1) cout << i << " ";
     cout << "\n";
-    
+
     cout << "sv2: ";
-    for (auto i : sv2)
-        cout << i << " ";
+    for (auto i : sv2) cout << i << " ";
     cout << "\n";
 
     cout << "Dot Product of sv1 and sv2: " << dotProduct(sv1, sv2) << "\n";
@@ -225,14 +211,12 @@ int main() {
 
     cout << "Vector Addition of sv1 and sv2: ";
     vector<double> sum = vectorAddition(sv1, sv2);
-    for (double val : sum)
-        cout << val << " ";
+    for (double val : sum) cout << val << " ";
     cout << "\n";
 
     cout << "Vector Multiplication sv1 and sv2: ";
     vector<double> product = vectorMultiply(sv1, sv2);
-    for (double val : product)
-        cout << val << " ";
+    for (double val : product) cout << val << " ";
     cout << "\n";
 
     cout << "Vector Subtraction sv1 - sv2: ";
@@ -249,12 +233,11 @@ int main() {
     }
     cout << endl;
 
-    cout << "The angle between vectors sv1 and sv2 in radians: " << angleBetweenVectors(sv1, sv2) << endl;
+    cout << "The angle between vectors sv1 and sv2 in radians: " << angleBetweenVectors(sv1, sv2)
+         << endl;
 
-    cout << "\n2D vector v2D: " << std::endl; 
+    cout << "\n2D vector v2D: " << std::endl;
     drawVector(v2D);
 
     return 0;
 }
-
-

@@ -19,4 +19,3 @@ std::vector<double> normalize(const std::vector<double>& v);
 void drawVector(const std::vector<double>& v);
 
 #endif
-
